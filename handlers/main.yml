@@ -1,0 +1,10 @@
+---
+- name: reload systemd_daemon
+  systemd:
+    daemon_reload: yes
+
+- name: restart gitlab_pipelines_exporter
+  service:
+    name: gitlab_pipelines_exporter
+    state: restarted
+    enabled: yes

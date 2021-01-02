@@ -1,0 +1,36 @@
+---
+dependency:
+  enabled: no
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint  -d .yamllint .
+  ansible-lint -c .ansible-lint
+platforms:
+  - name: centos-8-systemd
+    image: "geerlingguy/docker-centos8-ansible:latest"
+    pull: yes
+    command: /lib/systemd/systemd
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: yes
+    pre_build_image: yes
+  - name: debian-10-systemd
+    image: "geerlingguy/docker-debian10-ansible:latest"
+    pull: yes
+    command: /lib/systemd/systemd
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: yes
+    pre_build_image: yes
+provisioner:
+  name: ansible
+  playbooks:
+    converge: converge.yml
+  options:
+    D: yes
+verifier:
+  name: ansible
+  playbooks:
+    verify: verify.yml

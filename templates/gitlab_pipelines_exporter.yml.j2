@@ -1,0 +1,18 @@
+###################################
+# {{ansible_managed}} #
+###################################
+
+server:
+  listen_address: {{ gitlab_pipelines_exporter_listen_address }}
+
+{% if gitlab_url is defined and gitlab_token is defined %}
+gitlab:
+  url: {{ gitlab_url }}
+  token: {{ gitlab_token }}
+  enable_tls_verify: {{ gitlab_verify_ssl }}
+{% endif %}
+
+projects:
+{% for item in gitlab_projects if item in gitlab_projects %}
+  - name: {{ item }}
+{% endfor %}

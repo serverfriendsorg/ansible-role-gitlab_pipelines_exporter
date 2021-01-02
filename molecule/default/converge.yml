@@ -1,0 +1,21 @@
+---
+- name: Converge
+  hosts: all
+  become: yes
+
+  vars:
+    gitlab_url: 'https://gitlab.com'
+    gitlab_token: 'test'
+    gitlab_projects:
+      - test
+      - test
+      - test
+
+  pre_tasks:
+    - name: Install dependencies
+      package:
+        name: 'ca-certificates'
+        state: present
+
+  roles:
+    - role: ansible-role-gitlab_pipelines_exporter

@@ -1,0 +1,17 @@
+---
+gitlab_pipelines_exporter_architecture: 'linux_amd64'
+gitlab_pipelines_exporter_version: '0.4.4'
+
+gitlab_verify_ssl: 'true'
+
+gitlab_pipelines_exporter_download_url: 'https://github.com/mvisonneau/gitlab-ci-pipelines-exporter/releases/download/v{{ gitlab_pipelines_exporter_version }}/gitlab-ci-pipelines-exporter_v{{ gitlab_pipelines_exporter_version }}_{{ gitlab_pipelines_exporter_architecture }}.tar.gz'
+
+gitlab_pipelines_exporter_config_path: '/etc/prometheus/gitlab_pipelines_exporter'
+gitlab_pipelines_exporter_install_path: '/opt/prometheus/gitlab_pipelines_exporter-{{ gitlab_pipelines_exporter_version }}'
+
+gitlab_pipelines_exporter_listen_address: :8080
+
+gitlab_pipelines_exporter_user: 'prometheus'
+gitlab_pipelines_exporter_group: 'prometheus'
+gitlab_pipelines_exporter_user_home: '/home/prometheus'
+gitlab_pipelines_exporter_user_shell: '/sbin/nologin'

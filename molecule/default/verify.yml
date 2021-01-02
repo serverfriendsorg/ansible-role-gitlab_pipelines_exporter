@@ -1,0 +1,10 @@
+---
+- name: Verify
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Check if prometheus exporter is running
+      uri:
+        url: 'http://localhost:8080/metrics'
+        status_code: 200
