@@ -18,4 +18,4 @@
         state: present
 
   roles:
-    - role: ansible-role-gitlab_pipelines_exporter
+    - role: serverfriendsorg.gitlab_pipelines_exporter
