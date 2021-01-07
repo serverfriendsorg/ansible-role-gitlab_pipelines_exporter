@@ -37,4 +37,4 @@ GNU General Public License v3.0
 
 ## Author Information
 
-This role was created in 2020 by [Steven Conrad Bayer](https://steven.serverfriends.org/).
+This role was created in 2021 by [Steven Conrad Bayer](https://steven.serverfriends.org/).
