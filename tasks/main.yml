@@ -1,17 +1,21 @@
 ---
-- name: Ensure group for prometheus user exists
-  group:
-    name: '{{ gitlab_pipelines_exporter_group }}'
-    state: present
+- block:
 
-- name: Add user prometheus user
-  user:
-    name: '{{ gitlab_pipelines_exporter_user }}'
-    home: '{{ gitlab_pipelines_exporter_user_home }}'
-    group: '{{ gitlab_pipelines_exporter_group }}'
-    shell: '{{ gitlab_pipelines_exporter_user_shell }}'
-    state: present
+  - name: Ensure group for prometheus user exists
+    group:
+      name: '{{ gitlab_pipelines_exporter_group }}'
+      state: present
 
+  - name: Add user prometheus user
+    user:
+      name: '{{ gitlab_pipelines_exporter_user }}'
+      home: '{{ gitlab_pipelines_exporter_user_home }}'
+      group: '{{ gitlab_pipelines_exporter_group }}'
+      shell: '{{ gitlab_pipelines_exporter_user_shell }}'
+      state: present
+      
+  when: gitlab_pipelines_exporter_ensure_prometheus_user
+  
 - name: Create gitlab_pipelines_exporter directory
   file:
     path: '{{ gitlab_pipelines_exporter_install_path }}'
