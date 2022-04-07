@@ -8,7 +8,7 @@ After=network.target
 Wants=network.target
 
 [Service]
-ExecStart={{ gitlab_pipelines_exporter_install_path }}/gitlab-ci-pipelines-exporter --config {{ gitlab_pipelines_exporter_config_path }}/config.yml
+ExecStart={{ gitlab_pipelines_exporter_install_path }}/gitlab-ci-pipelines-exporter run --config {{ gitlab_pipelines_exporter_config_path }}/config.yml
 Restart=always
 RestartSec=20
 TimeoutSec=300
